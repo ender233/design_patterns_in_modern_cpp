@@ -32,6 +32,8 @@
 *.app
 
 # cmakefiles
+cmake-build-debug
+*.cbp
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
