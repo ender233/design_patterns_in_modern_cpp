@@ -5,5 +5,5 @@ set(CMAKE_CXX_STANDARD 17)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost 1.65.1 COMPONENTS log thread system regex REQUIRED)
 
-add_executable(State main.cpp)
+add_executable(State main.cpp classic_state.hpp classic_state.cpp)
 target_link_libraries (State ${Boost_LIBRARIES})

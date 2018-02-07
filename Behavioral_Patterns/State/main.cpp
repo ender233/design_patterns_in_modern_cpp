@@ -1,12 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "classic_state.hpp"
+
 // back-end
 #include <boost/msm/back/state_machine.hpp>
 // front-end
 #include <boost/msm/front/state_machine_def.hpp>
 #include <boost/msm/front/functor_row.hpp>
 
+/*
 namespace msm = boost::msm;
 namespace mpl = boost::mpl;
 using namespace msm::front;
@@ -44,8 +47,14 @@ struct PhoneStateMachine : state_machine_def<PhoneStateMachine> {
         }
     };
 };
+ */
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    // classic State Design Pattern
+    std::cout<<"LightSwitch begin...";
+    LightSwitch *ls = new LightSwitch();
+    ls->on();
+    ls->off();
+    ls->off();
     return 0;
 }
