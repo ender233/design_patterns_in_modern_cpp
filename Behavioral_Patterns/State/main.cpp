@@ -3,53 +3,43 @@
 #include <string>
 #include "classic_state.hpp"
 
-// back-end
-#include <boost/msm/back/state_machine.hpp>
-// front-end
-#include <boost/msm/front/state_machine_def.hpp>
-#include <boost/msm/front/functor_row.hpp>
-
-/*
-namespace msm = boost::msm;
-namespace mpl = boost::mpl;
-using namespace msm::front;
-using namespace std;
-
-vector<string> state_names{
-        "off hook"s,
-        "connecting"s,
-        "connected"s,
-        "on hold"s,
-        "destroyed"s
+// non-state
+enum LIGHT_STATE {
+    LIGHT_ON,
+    LIGHT_OFF
 };
-enum class State {
-    off_hook,
-    connecting,
-    connected,
-    on_hold,
-    on_hook
-};
-struct CallDialed{};
-struct HungUp{};
-struct CallConnected {};
-struct PlaceOnHold{};
-struct TakeOffHold{};
-struct LeftMessage{};
-struct PhoneThrownIntoWall{};
 
-struct PhoneStateMachine : state_machine_def<PhoneStateMachine> {
-    struct off_hook : state<> {};
-    struct connecting : state<> {
-        // No override??
-        template <class Event, class FSM>
-        void on_entry(const Event &event, FSM &fsm) {
+struct LightSwitch2 {
+    LIGHT_STATE state_;
+    LightSwitch2() : state_(LIGHT_OFF) {}
 
+    void on() {
+        if(state_ == LIGHT_OFF) {
+            std::cout<<"Switching Light on\n";
+            state_ = LIGHT_ON;
         }
-    };
+        else
+            std::cout<<"Light turn on\n";
+    }
+    void off() {
+        if(state_ == LIGHT_ON){
+            std::cout<<"Switching Light off\n";
+            state_ = LIGHT_OFF;
+        }
+        else {
+            std::cout<<"Light turn off\n";
+        }
+    }
 };
- */
 
 int main() {
+    // non-state
+    LightSwitch2 ls2;
+    ls2.on();
+    ls2.off();
+    ls2.off();
+    std::cout<<std::endl;
+
     // classic State Design Pattern
     std::cout<<"LightSwitch begin...";
     LightSwitch *ls = new LightSwitch();
